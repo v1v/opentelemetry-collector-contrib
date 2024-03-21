@@ -400,3 +400,29 @@ genconfigdocs:
 generate-gh-issue-templates:
 	cd cmd/githubgen && $(GOCMD) install .
 	githubgen issue-templates
+
+## Victor
+IMAGE = docker.elastic.co/observability-ci/githubactions-otel-contrib
+
+build: $(BUILDER)
+	mkdir -p .tools
+	env GOOS=linux GOARCH=amd64 \
+		$(BUILDER) --config cmd/otelcontribcol/builder-config.yaml --output-path .tools/otelcontribcol
+
+## @help:docker-build:Build docker image
+docker-build:
+	docker build --platform linux/amd64 --tag $(IMAGE):latest .
+
+## @help:docker-push:Push docker image
+docker-push:
+	docker tag $(IMAGE):latest $(IMAGE):0.0.1
+	docker push --all-tags $(IMAGE)
+
+docker: build docker-build docker-push
+
+
+docker-run:
+	docker run --rm -ti -p 8006:8006 \
+		--platform linux/amd64 \
+		-v ./otel-collector-config.yaml:/etc/otelcol-contrib/config.yaml \
+		$(IMAGE):latest

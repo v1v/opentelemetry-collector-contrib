@@ -126,7 +126,6 @@ require (
 	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/filelogreceiver v0.90.0 // indirect
 	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/flinkmetricsreceiver v0.90.0 // indirect
 	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/fluentforwardreceiver v0.90.0 // indirect
-	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/githubactionsreceiver v0.90.0 // indirect
 	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/haproxyreceiver v0.90.0 // indirect
 	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/httpcheckreceiver v0.90.0 // indirect
 	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/iisreceiver v0.90.0 // indirect
@@ -1156,3 +1155,5 @@ replace (
 	github.com/open-telemetry/opentelemetry-collector-contrib/connector/servicegraphconnector => ../../connector/servicegraphconnector
 	github.com/open-telemetry/opentelemetry-collector-contrib/connector/spanmetricsconnector => ../../connector/spanmetricsconnector
 )
+
+replace github.com/open-telemetry/opentelemetry-collector-contrib/receiver/githubactionsreceiver => ../../receiver/githubactionsreceiver

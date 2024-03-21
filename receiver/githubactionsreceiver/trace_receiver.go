@@ -1,7 +1,7 @@
 // Copyright The OpenTelemetry Authors
 // SPDX-License-Identifier: Apache-2.0
 
-package githubactionsreceiver
+package githubactionsreceiver // import "github.com/open-telemetry/opentelemetry-collector-contrib/receiver/githubactionsreceiver"
 
 import (
 	"context"
@@ -304,7 +304,7 @@ func createSpan(scopeSpans ptrace.ScopeSpans, step Step, job WorkflowJob, traceI
 
 	setSpanTimes(span, step.StartedAt, step.CompletedAt)
 	span.SetName(step.Name)
-	span.SetKind(ptrace.SpanKindServer)
+	span.SetKind(ptrace.SpanKindInternal)
 
 	switch step.Conclusion {
 	case "success":

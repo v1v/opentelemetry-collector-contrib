@@ -39,3 +39,5 @@ integration-coverage.html
 go.work*
 
 /result
+
+otel-collector-config.yaml
